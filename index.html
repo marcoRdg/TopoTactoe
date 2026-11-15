@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TopoTacToe</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 12px;
+        min-height: 100vh;
+        background-color: #1a1a1a;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: sans-serif;
+      }
+      h1 {
+        margin: 0 0 8px 0;
+        font-size: 1.4rem;
+      }
+      #controls {
+        margin-bottom: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+      }
+      button, select {
+        padding: 7px 12px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid #444;
+        background-color: #2c2c2c;
+        color: white;
+      }
+      button {
+        background-color: #4CAF50;
+        border: none;
+      }
+      button:hover {
+        opacity: 0.9;
+      }
+      #status-bar {
+        margin-bottom: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        color: #cccccc;
+        min-height: 20px;
+      }
+      /* Empilha o Canvas 2D e o Canvas 3D exatamente nas mesmas coordenadas */
+      #game-container {
+        display: grid;
+        place-items: center;
+      }
+      #game-container canvas {
+        grid-area: 1 / 1;
+      }
+      .canvas-2d {
+        z-index: 1;
+        background-color: #2a2a2a;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        display: block;
+      }
+      .canvas-overlay-3d {
+        z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TopoTacToe</h1>
+    <div id="controls">
+      <select id="mode-select">
+        <option value="2D">Modo 2D (Recobrimento)</option>
+        <option value="3D">Modo 3D (Direto)</option>
+        <option value="MORPH">Modo 3D Dobrável (GSAP)</option>
+      </select>
+
+      <button id="fold-btn" style="display: none; background-color: #2196F3;">
+        Dobrar / Planificar
+      </button>
+
+      <select id="topology-select">
+        <option value="torus">Toro</option>
+        <option value="cylinder">Cilindro</option>
+        <option value="klein">Garrafa de Klein</option>
+      </select>
+
+      <select id="size-select">
+        <option value="3">3x3</option>
+        <option value="4">4x4</option>
+        <option value="5">5x5</option>
+        <option value="7">7x7</option>
+      </select>
+
+      <select id="theme-select">
+        <option value="dark">Tema: Escuro</option>
+        <option value="light">Tema: Papel Claro</option>
+        <option value="neon">Tema: Neon</option>
+      </select>
+
+      <button id="restart-btn" style="background-color: #e67e22;">
+        Nova Partida
+      </button>
+    </div>
+
+    <div id="status-bar">Vez do Jogador: X (Vermelho)</div>
+    <div id="game-container"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
